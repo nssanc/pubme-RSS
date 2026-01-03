@@ -42,6 +42,9 @@ jobs:
         git config --global user.name 'GitHub Actions Bot'
         git config --global user.email 'actions@github.com'
         git add docs/
-        # 如果没有新内容生成，就不提交，避免报错
+        # 这一步尝试提交，如果没有新内容（比如今天没新论文）就不报错退出
         git commit -m "Update Daily Papers [skip ci]" || exit 0
+        # === 关键修复点：推送前先拉取最新代码，防止冲突 ===
+        git pull --rebase origin main
+        # ================================================
         git push
