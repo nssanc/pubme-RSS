@@ -1,2 +1,5 @@
 feedparser
 deep-translator
+pytz
+markdown
+biopython
